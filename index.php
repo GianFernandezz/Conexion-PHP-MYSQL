@@ -1,15 +1,27 @@
 <?php
 include_once 'conexion.php';
+
+// Instanciamos la clase en una variable
 $objeto = new Conexion();
+// Utilizo el metodo creado
 $conexion = $objeto->Conectar();
 
 $consulta = "SELECT * FROM usuarios";
+// Sentencia Preparada.
 $resultado = $conexion->prepare($consulta);
+// Ejecutamos la consulta
 $resultado->execute();
-$usuarios=$resultado->fetchAll(PDO::FETCH_ASSOC);
+// fetchAll - buscamos todos los datos y lo almacenamos en una variable.
+$usuarios=$resultado->fetchAll(PDO::FETCH_ASSOC); // Constante PDO:devuelve un array indexado
+
+// var_dump($usuarios);
+// foreach($usuarios as $datos){
+//     echo $datos['nombre']."<br>";
+// }
+
 ?>
 
-
+<!-- PLANTILLA DATATABLES -->
 <!Doctype html>
 <html lang="en">
   <head>
@@ -25,7 +37,7 @@ $usuarios=$resultado->fetchAll(PDO::FETCH_ASSOC);
     <title>Test</title>
     <style>
         table.dataTable thead {
-            background: linear-gradient(to right, #0575E6, #00F260);
+            background: linear-gradient(to right, #d63031, #0984e3);
             color:white;
         }
     </style>  
@@ -34,7 +46,7 @@ $usuarios=$resultado->fetchAll(PDO::FETCH_ASSOC);
   <body>
     <h1 class="text-center">Datatables</h1>
       
-    <h3 class="text-center">Consumiendo datos desde MySQL - PHP - Foreach</h3>
+    <h3 class="text-center">Mostrar los datos desde MySQL</h3>
     
     <div class="container">
        <div class="row">
@@ -70,8 +82,6 @@ $usuarios=$resultado->fetchAll(PDO::FETCH_ASSOC);
        </div> 
     </div>
    
-    
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -79,7 +89,7 @@ $usuarios=$resultado->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
       
       
-<!--    Datatables-->
+    <!--    Datatables-->
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
       
       

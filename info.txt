@@ -1,0 +1,9 @@
+PDO -> Es una extencion  de objetos de datos PHP.
+
+Ventajas:
+- - - - - 
+• Define una interfaz para poder acceder a BD con PHP.
+• PDO-> Nos brinda un controlador(Driver) para cada BD. Para conectarme a cualquier BD
+    simplemente cambio el Driver.
+• Mejora en la seguridad y rendimiento de la app.
+- - - - - - 
